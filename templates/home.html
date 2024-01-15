@@ -8,12 +8,14 @@
     <article class="post">
         <div class="post-title"><a href="{{ post.permalink }}" class="post-title-link">{{ post.title }}</a></div>
         <div class="post-content">
-            {% if config.extra.seje_show_summary_only %}
-                {{ post.summary }}
-                <a href="{{ post.permalink }}" class="More">More</a>
-            {% else %}
-                {{ post.content | safe }}
-            {% endif %}
+            <div class="c-article__summary">
+              {% if post.summary -%}
+              {{ post.summary | safe }}
+              {% else %}
+              {{ post.content | striptags | truncate(length=280) | safe }}
+              {%- endif %}
+          </div>
+          <a href="{{ post.permalink }}" class="c-article__btn p-list-article__btn">繼續閱讀⋯⋯</a>
         </div>
         <div class="post-meta">
             {% if config.extra.seje_chinese_date %}
