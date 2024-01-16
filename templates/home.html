@@ -23,6 +23,7 @@
             {% else %}
                 {{ post.date|date(format="%Y/%m/%d") }}
             {% endif %}
+            - 閱讀時間 {{ post.reading_time }} 分鐘
         </div>
     </article>
     {% endfor %}
