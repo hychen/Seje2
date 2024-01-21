@@ -5,7 +5,12 @@
         <li class="menu-item">
             {% set url_inner = item['url'] | replace(from="$BASE_URL", to="") %}
             {% set url = url_inner ~ '/'%}
-            {% set path = page.path|default(value = section.path) %}
+            {% if section and section.path %}
+            {% set section_path = section.path %}
+            {% else %}
+            {% set section_path = '' %}
+            {% endif %}
+            {% set path = page.path|default(value = section_path) %}
             {% if url == path or url_inner == path %}
             <a href="{{ item['url'] | replace(from="$BASE_URL", to=config.base_url) }}" class="current-menu-item-link">{{ trans(key=item['name']) }}</a>
             {% else %}
