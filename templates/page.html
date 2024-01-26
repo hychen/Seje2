@@ -10,13 +10,20 @@
     <div class="post-content">
         {{ page.content | safe }}
     </div>
+
+    <hr/>
+
     <div class="post-meta">
+
+      <p>如果你覺得我寫的文章對你有幫助的話，也許可以考慮<a href="https://www.buymeacoffee.com/tysonchen">請我喝一杯咖啡</a>。合作邀約請寄到 tysonchen.biz AT gmail.com。</p>
+
         <span class="post-time">
         {% if config.extra.seje_chinese_date %}
             {{ macros::format_chinese_date(year=page.year, month=page.month, day=page.day) }}
         {% else %}
             {{ page.date|date(format="%Y/%m/%d") }}
         {% endif %}
+        - 閱讀時間 {{ page.reading_time }} 分鐘
         </span>
     </div>
 </article>
